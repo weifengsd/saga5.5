@@ -11,11 +11,11 @@
 # -------------------------------------
 
 echo ">>> Initializing SAGA <<<"
-export SAGADIR=~/saga
+export SAGADIR=C:/Users/wfeng/Documents/GitHub/saga5.5
 
 #export FORTRAN=ifort
 export FORTRAN=gfortran
-export HOSTTYPE=x86_64
+export HOSTTYPE=x86_64-pc-cygwin
 PATH=$PATH:$SAGADIR/bin/$HOSTTYPE-$FORTRAN:$SAGADIR/bin
 
 # -------------------------------------------

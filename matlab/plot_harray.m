@@ -59,7 +59,7 @@ if(exist('no_title') == 0)
  text(.05,.02, ['File: ',pwd,'/',filenm,'; Date: ',date],'fontsize',6)
 end;
 
-end;
+
 
 
 

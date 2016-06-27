@@ -304,7 +304,7 @@ if(exist('no_title') == 0)
    axes('position',[0,0,1,1]); axis('off');
    text(.05,.035, [stringofcomments0],'fontsize',9);
    filenmp = ['ppd',num2str(bestfit)];
-   text(.05,.02, ['File: ',pwd,'/',filenm,'; Date: ',date],'fontsize',6);
+   text(.05,.02, ['File: ',pwd,'\',filenm,'; Date: ',date],'fontsize',6);
    saveas(gcf,[filenmp '.fig'],'fig') 
    print('-depsc',[filenmp '.eps'])  
 end;
@@ -317,6 +317,7 @@ icom = true ;
 if icom
    figure(3); clf
    jplot=0;
+   nstep_plots = 1; % FW add
    for j = 1:nstep_plots:nplots
       jplot=jplot+1;
       if (rem(jplot,3)==0) 

@@ -6,6 +6,8 @@ nfile = writefort81(filen, mm)
 %  /mpl/chenfen/saga/matlab/writefort81.m
 % create fort.81_...
 
+
+
 filenm = [filen 'resa'];
 fre = 295;
 

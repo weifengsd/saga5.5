@@ -76,20 +76,7 @@
   xplane:             0
  freq,number of modes           1           9
 
-  initial fitness  0.930349469    
-
-  crossover probability      0.800000012    
-  mutation  probability       5.00000007E-02
-  update    probability      0.500000000    
-  number of iterations             2000
-  size   of populations              64
-  number of populations              10
-
- retuned point   5363.33594       74.3144073       1467.04858       1567.18201       1570.23340       127.612175       111.284874       1.98793077       2.17989612       1.86708887E-04  0.239222899       2.22852087    
- retuned value   4.17726189E-02
- freq,number of modes           1           9
-
-  initial fitness  0.930349469    
+  initial fitness  0.930349410    
 
   crossover probability      0.800000012    
   mutation  probability       5.00000007E-02
@@ -99,62 +86,64 @@
   number of populations              10
 
  freq,number of modes           1           6
- freq,number of modes           1          12
  freq,number of modes           1          11
+ freq,number of modes           1          10
  freq,number of modes           1           8
  freq,number of modes           1          10
- freq,number of modes           1           9
- freq,number of modes           1           8
- freq,number of modes           1           8
- freq,number of modes           1           9
- freq,number of modes           1          10
- freq,number of modes           1          11
- freq,number of modes           1           9
  freq,number of modes           1           8
  freq,number of modes           1           6
- freq,number of modes           1          10
  freq,number of modes           1          11
  freq,number of modes           1           9
+ freq,number of modes           1           6
+ freq,number of modes           1           8
  freq,number of modes           1          10
- freq,number of modes           1           9
+ freq,number of modes           1           7
+ freq,number of modes           1          10
+ freq,number of modes           1          11
+ freq,number of modes           1          11
+ freq,number of modes           1           8
+ freq,number of modes           1          11
+ freq,number of modes           1          10
+  >>> Estimated serial Inversion time:         19.5 secs.
+ retuned point   5362.34229       74.2818985       1466.90747       1566.19055       1570.44885       127.603043       111.266258       1.99320245       2.17870784       9.89285763E-03  0.241880372       2.23926473    
+ retuned value   4.19529043E-02
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   10
-  >>> Estimated serial Inversion time:         11.4 secs.
- retuned point   5369.00293       74.5533142       1519.36060       1553.25171       1601.45642       127.007210       111.857941       1.99253249       2.10174775      0.153242335       8.56849775E-02   9.72458076    
- retuned value   3.92285101E-02
+ retuned point   5370.33691       74.7350769       1518.63770       1553.19250       1600.92834       127.005646       111.837440       1.98116660       2.10742044      0.155683711       8.30451101E-02   9.61153793    
+ retuned value   3.95027623E-02
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    9
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    9
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    9
- retuned point   5386.01367       74.4574051       1491.06201       1587.27478       1574.12793       127.613419       111.401306       1.83662283       2.04991651       1.67824328E-02  0.306026250       5.38591814    
- retuned value   4.09650356E-02
- retuned point   5355.10645       74.2470932       1454.12378       1549.61658       1564.74548       127.110901       111.095428       1.88048339       2.13006663       1.31912986E-02  0.120821990       1.81690919    
- retuned value   4.18391116E-02
+ retuned point   5384.75830       74.3691025       1496.84570       1583.18677       1576.24744       127.553024       111.571800       1.84711528       2.06231880       6.35802820E-02  0.318344504       6.01973200    
+ retuned value   4.13178019E-02
+ retuned point   5351.35645       74.3148422       1451.62329       1548.89917       1565.61035       127.068604       111.080856       1.87213743       2.09976673       3.52139659E-02  0.128128588       1.84964049    
+ retuned value   4.19359207E-02
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   10
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    8
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    8
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    8
- retuned point   5374.78906       74.4119873       1516.52600       1535.15967       1575.09692       127.426857       111.415634       1.99046981       2.02045846       1.84692699E-03  0.253795445       4.66141272    
- retuned value   4.07068878E-02
- retuned point   5370.51611       74.4119568       1506.89551       1572.20667       1575.30371       127.326385       111.418869       1.98228335       1.87787986       8.69764462E-02  0.212981313       7.07586575    
- retuned value   4.11041714E-02
+ retuned point   5379.00586       74.5144272       1525.15344       1531.75745       1574.84143       127.310738       111.230591       1.99917245       2.10949731       3.29710692E-02  0.191032499       5.37511015    
+ retuned value   4.11731154E-02
+ retuned point   5383.69531       74.4467316       1508.67163       1571.70288       1574.83374       127.464943       111.183220       1.91827774       1.88867223       9.98255834E-02  0.201804116       6.84724236    
+ retuned value   4.17337939E-02
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   10
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   11
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   11
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   12
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    9
- retuned point   5355.37402       74.3008575       1500.57935       1569.43555       1575.48657       127.000565       111.097473       1.97953570       1.84961581       8.23495884E-06  0.331184715       6.68438053    
- retuned value   4.06040847E-02
+ retuned point   5352.29736       74.2411041       1495.42676       1569.84021       1575.39832       127.019554       111.115257       1.96446323       1.82514822       6.39264836E-05  0.349596500       5.95912075    
+ retuned value   4.08276208E-02
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE    8
- retuned point   5384.12842       74.4159470       1504.09351       1551.14258       1571.34338       127.912125       111.338860       1.98899066       2.14536142       2.94913480E-04  0.232106537       2.88061738    
- retuned value   4.12241668E-02
- retuned point   5382.86963       74.6146240       1516.74377       1563.29480       1599.36951       127.232956       111.965858       1.93406749       2.15471125      0.119239926      0.191444322       9.97830677    
- retuned value   3.92174050E-02
+ retuned point   5384.77539       74.4214325       1502.95850       1555.44617       1570.84875       127.907867       111.353622       1.98566580       2.14661288       4.53399774E-03  0.221730292       2.95737052    
+ retuned value   4.12709489E-02
+ retuned point   5381.38037       74.5792389       1515.21436       1564.79395       1596.07739       127.252342       112.017372       1.94030428       2.14551806      0.115074478      0.200766534       9.67801952    
+ retuned value   3.95188332E-02
   Population          10
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   11
   TRIAL EIGENVALUE BEYOND CUTOFF FOR MODE   11
- retuned point   5377.17627       74.3626709       1469.62036       1547.27307       1574.30676       127.268654       111.449226       1.67897844       1.83093512       8.11474965E-05  0.233129233       3.04745913    
- retuned value   4.09762636E-02
+ retuned point   5394.75586       74.6680832       1476.81812       1567.03491       1573.65662       127.639130       111.687897       1.71790540       1.91029155       7.64222294E-02  0.163196191       3.63567686    
+ retuned value   4.20942269E-02
 
-   best of all energy   3.99012305E-02
+   best of all energy   3.99012417E-02
   best-of all      deviation  
    1  5381.890        -1118.110
    2    74.567           24.567
@@ -168,21 +157,21 @@
   10     0.123           -0.007
   11     0.198            0.048
   12     9.764            7.264
- local fit   3.92174050E-02
-   1  5382.870        -1117.130
-   2    74.615           24.615
-   3  1516.744           -3.256
-   4  1563.295          -16.705
-   5  1599.370           -0.630
-   6   127.233            0.233
-   7   111.966           -0.754
-   8     1.934            0.184
-   9     2.155            0.355
-  10     0.119           -0.011
-  11     0.191            0.041
-  12     9.978            7.478
+ local fit   3.95027623E-02
+   1  5370.337        -1129.663
+   2    74.735           24.735
+   3  1518.638           -1.362
+   4  1553.193          -26.807
+   5  1600.928            0.928
+   6   127.006            0.006
+   7   111.837           -0.883
+   8     1.981            0.231
+   9     2.107            0.307
+  10     0.156            0.026
+  11     0.083           -0.067
+  12     9.612            7.112
 
- Forward  modelling calls:   24158
+ Forward  modelling calls:   20971
   ndep,rd,rdlow:           48   112.720001       18.7199993    
   arrayshape:    0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
   multistatic:  F
@@ -191,4 +180,4 @@
   msource:  F
   iscale:             0
   xplane:             0
- Inversion, time:        6.004 secs.
+ Inversion, time:       19.125 secs.

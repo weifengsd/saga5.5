@@ -58,7 +58,7 @@ computing 2D marginal PPD between parameters  1 and  2
   xplane:             0
  freq,number of modes           1          26
 
-  initial fitness   1.57872986E-04
+  initial fitness   1.57859875E-04
 
   crossover probability      0.800000012    
   mutation  probability       5.00000007E-02
@@ -86,36 +86,36 @@ computing 2D marginal PPD between parameters  1 and  2
  freq,number of modes           1          26
  freq,number of modes           1          26
  freq,number of modes           1          26
-  >>> Estimated serial Inversion time:         12.0 secs.
+  >>> Estimated serial Inversion time:         29.3 secs.
  retuned point   1498.99731       1481.20081       9301.38379       77.9961014    
- retuned value   2.68082396E-04
- retuned point   1500.10193       1482.27722       9296.77148       78.0223465    
- retuned value   2.86934490E-04
+ retuned value   2.68107076E-04
+ retuned point   1500.10193       1482.27722       9296.77148       78.0223541    
+ retuned value   2.86951137E-04
  retuned point   1499.79834       1479.49792       7999.90918       80.1110153    
  retuned value  0.340080053    
  retuned point   1499.50037       1481.69873       9299.62305       78.0041504    
- retuned value   1.51797896E-04
+ retuned value   1.51787084E-04
  retuned point   1499.00659       1481.20239       9308.25000       78.2781677    
- retuned value   1.72223765E-02
+ retuned value   1.72223803E-02
  retuned point   1498.60291       1480.91467       9306.82031       77.9911423    
  retuned value   5.85520826E-03
  retuned point   1499.50476       1482.18091       9987.55078       78.2656708    
  retuned value  0.642957389    
- retuned point   1499.17358       1480.67407       7791.43164       77.8995667    
- retuned value  0.261688620    
+ retuned point   1499.17358       1480.67407       7791.43164       77.8995590    
+ retuned value  0.261688501    
  retuned point   1497.51465       1479.10437       7797.08984       78.0010300    
  retuned value  0.272238821    
   Population          10
  retuned point   1501.09570       1478.97986       9490.20996       82.2870941    
  retuned value  0.406693399    
 
-   best of all energy   1.65763122E-04
+   best of all energy   1.65782418E-04
   best-of all      deviation  
    1  1499.500            0.100
    2  1481.700            0.100
    3  9300.000            0.000
    4    78.002            0.002
- local fit   1.51797896E-04
+ local fit   1.51787084E-04
    1  1499.500            0.100
    2  1481.699            0.099
    3  9299.623           -0.377
@@ -130,4 +130,4 @@ computing 2D marginal PPD between parameters  1 and  2
   msource:  F
   iscale:             0
   xplane:             0
- Inversion, time:       12.393 secs.
+ Inversion, time:       23.625 secs.

@@ -1,21 +1,23 @@
  [A26-1417-2f170AT] Elba Test case                                              
    i c			! options                       
- plotting ppd  on a full scale 
+ plotting ppd on a full scale 
  reading in covariance matrix 
-  >>>> unknown inversion OPTION: 	 <<<<
-  >>>> unknown inversion OPTION: 	 <<<<
-  >>>> unknown inversion OPTION: 	 <<<<
-          1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
- Options: 2 1 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0
- Options (norm): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  Number of forward modelling runs:    20000.0
-  Points in water:  11
-  number of receiver depths read  48
+ >>>> unknown inversion OPTION: 	 <<<<
+ >>>> unknown inversion OPTION: 	 <<<<
+ >>>> unknown inversion OPTION: 	 <<<<
+                    1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9
+                    0 1 2 3 4 5 6 7 8 9 0
+ Options:           2 1 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0
+ Options (norm):    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ Options (isubopt): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Number of forward modelling runs:       20000
+  Points in water:          11
+  number of receiver depths read          48
   reading ranges in....
- number of ranges  1
- number of bartlett estimators  1
-  ncurv=  1nbart=  1
- 
+ number of ranges           1
+ number of bartlett estimators           1
+  ncurv=           1 nbart=           1
+
   parameters to be optimized:
                    physparm     layer  min.val  max.val   del.val   nbit  ndig
   1 Source range (m)         9   1   4500.00   6500.00     15.75    7  128
@@ -26,22 +28,22 @@
   6 Water depth (m)          1   1    127.00    128.00      0.01    7  128
   7 Receiver depth (m)      15   1    111.00    113.00      0.02    7  128
   8 Sediment density (g/cm   6   1      1.50      2.00      0.00    7  128
-  9 Bottom density (g/cm3)  14   1      1.70      2.20      0.00    7  128
- 10 Attenuation (dB/lambda   4   1      0.00      0.40      0.00    7  128
- 11 Attenuation (dB/lambda   4   2      0.00      0.40      0.00    7  128
+  9 Bottom density (g/cm^3  14   1      1.70      2.20      0.00    7  128
+ 10 Attenuation (dB/\lambd   4   1      0.00      0.40      0.00    7  128
+ 11 Attenuation (dB/\lambd   4   2      0.00      0.40      0.00    7  128
  12 Sediment depth (m)      17   1      0.00     10.00      0.08    7  128
  Size of the search space: 10** 25.29
   uses snap as forward model
- 
+
  Calling SNAP
- flagpu    1.00000
-  Frequency:    169.922
-  R1,R2    1.75000    1.80000
-  SCATT(1),SCATT(2)  0.  0.
-  H0,H1    127.00000000000    2.5000000000000
-  ND0,ND1  11  2
-  BETA(1),BETA(2),BETA(3)   0.130000   0.150000  0.
-  c2,c2s    1600.00  0.
+ flagpu           1
+  Frequency:   169.921906    
+  R1,R2   1.75000000       1.79999995    
+  SCATT(1),SCATT(2)   0.00000000       0.00000000    
+  H0,H1   127.00000000000000        2.5000000000000000     
+  ND0,ND1          11           2
+  BETA(1),BETA(2),BETA(3)  0.129999995      0.150000006       0.00000000    
+  c2,c2s   1600.00000       0.00000000    
  z0,c0
   1     0.000  1525.500
   2    56.460  1526.350
@@ -59,20 +61,75 @@
   1     0.000  1520.000
   2     2.500  1580.000
 
-  np  1
-  first reciever depth    112.720
-  ranges    6500.00
- number of sources  1
-  source depth,i    50.0000  1
- arrayshape:  0.  0.  0.  0.  0.
- freq,number of modes  1  9
-  Exiting snap...
-  initial fitness   0.930349
- 
-  crossover probability       0.800000
-  mutation  probability        5.00000E-02
-  update    probability       0.500000
-  number of iterations         2000.00
-  size   of populations      64
-  number of populations       10.00000
- 
+  np           1
+  first reciever depth   112.720001    
+  ranges   6500.00000    
+ number of sources           1
+  source depth,i   50.0000000               1
+  ndep,rd,rdlow:           48   112.720001       18.7199993    
+ arrayshape:    0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
+  multistatic:  F
+  tilt:  F
+  mbeam:    F
+  msource:  F
+  iscale:             0
+  xplane:             0
+ freq,number of modes           1           9
+  initial fitness  0.930349410    
+
+  crossover probability      0.800000012    
+  mutation  probability       5.00000007E-02
+  update    probability      0.500000000    
+  number  of iterations            2000
+  size   of populations              64
+  number of populations              10
+
+ setting model for maxppd parameters
+ freq,number of modes           1           8
+ setting model for mean parameters
+ freq,number of modes           1           8
+  Calling forwardmodel with best model
+ freq,number of modes           1           9
+ freq,number of modes           1           8
+  best obtainable theoretical fit  -1.52969733E-07
+  best fit (best, ppd, mean)   3.99012417E-02   4.74101566E-02   4.36884239E-02
+
+                               best of all  most likely      mean   std-dev
+  1 Source range (m)           1  5381.890     5381.890  5374.040     0.006
+  2 Source depth (m)           1    74.567       74.252    74.413     0.007
+  3 Sediment sound speed (m/s) 1  1516.929     1518.504  1503.429     0.163
+  4 Sediment sound speed (m/s) 2  1563.780     1563.780  1562.239     0.171
+  5 Bottom sound speed (m/s)   1  1595.669     1575.984  1580.468     0.117
+  6 Water depth (m)            1   127.244      127.008   127.395     0.320
+  7 Receiver depth (m)         1   112.055      111.866   111.578     0.185
+  8 Sediment density (g/cm^3)  1     1.953        2.000     1.939     0.129
+  9 Bottom density (g/cm^3)    1     2.145        2.145     2.042     0.246
+ 10 Attenuation (dB/\lambda)   1     0.123        0.094     0.093     0.147
+ 11 Attenuation (dB/\lambda)   2     0.198        0.091     0.201     0.221
+ 12 Sediment depth (m)         1     9.764        9.764     6.113     0.263
+
+  Deviation from initial model:
+  1 Source range (m)           -1118.110    -1118.110 -1125.960     0.006
+  2 Source depth (m)              24.567       24.252    24.413     0.007
+  3 Sediment sound speed (m/s)    -3.071       -1.496   -16.571     0.163
+  4 Sediment sound speed (m/s)   -16.220      -16.220   -17.761     0.171
+  5 Bottom sound speed (m/s)      -4.331      -24.016   -19.532     0.117
+  6 Water depth (m)                0.244        0.008     0.395     0.320
+  7 Receiver depth (m)            -0.665       -0.854    -1.142     0.185
+  8 Sediment density (g/cm^3)      0.203        0.250     0.189     0.129
+  9 Bottom density (g/cm^3)        0.345        0.345     0.242     0.246
+ 10 Attenuation (dB/\lambda)      -0.007       -0.036    -0.037     0.147
+ 11 Attenuation (dB/\lambda)       0.048       -0.059     0.051     0.221
+ 12 Sediment depth (m)             7.264        7.264     3.613     0.263
+ Bartlett power (dB) for freq   1    -0.19
+  Calling forwardmodel with best model
+  ndep,rd,rdlow:           48   112.720001       18.7199993    
+  arrayshape:    0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
+  multistatic:  F
+  tilt:  F
+  mbeam:    F
+  msource:  F
+  iscale:             0
+  xplane:             0
+ freq,number of modes           1           9
+ Postprossing, time:        0.719 secs.

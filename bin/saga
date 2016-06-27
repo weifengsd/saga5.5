@@ -34,9 +34,7 @@ export FOR090=$1.env
     #else
     #    export DB='nice +19'
     #endif
-
 export DB=' '
-
 if [ $# == 3 ]; then
   if [ "$3" == "cov" ]; then
      export FOR002=cov.in
@@ -48,7 +46,6 @@ if [ $# == 3 ]; then
      echo 'entering debugging mode'  
   fi
 fi
-
 if [ $# == 1 ]; then
   echo ' Only one parameter; Was the forward model specified ?'
 fi
@@ -90,6 +87,3 @@ fi
   else 
        echo " Forward model "$2" not valid "
   fi
-
-
-

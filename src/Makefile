@@ -4,7 +4,7 @@
 #                              gerstoft@ucsd.edu
 # ----------------------------------------------------------------------------
 #
-CC     = cc
+CC     = gcc
 CFLAGS = -O
 FC     = f90
 FFLAGS = -O -Call
@@ -133,6 +133,44 @@ MISCLIB.x86_64-linux-gfortran       = ./obj/${HOSTTYPE}-${FORTRAN}/misc.a
 RANLIB.x86_64-linux-gfortran        = ranlib
 MODULE.x86_64-linux-gfortran      = 
 MODULE2.x86_64-linux-gfortran       = 
+
+# GNU fortran compiler gfortran 4.9.3 on MinGW  (June 2016)
+x86_64-pc-linux-gnu-gfortran:
+FC.x86_64-pc-linux-gnu-gfortran	     = gfortran  
+CC.x86_64-pc-linux-gnu-gfortran		 = gcc
+FC90.x86_64-pc-linux-gnu-gfortran	     = gfortran
+FFLAGS.x86_64-pc-linux-gnu-gfortran        = -O2  -w  
+FFLAGS90.x86_64-pc-linux-gnu-gfortran        = -O2  -w  
+FFLAGS_warn.x86_64-pc-linux-gnu-gfortran   =  -O2 -u   -w 
+FFLAGS_GAMA_warn.x86_64-pc-linux-gnu-gfortran = -O2  -w 
+FFLAGS_GAMA.x86_64-pc-linux-gnu-gfortran   =     -w 
+FFLAGS_GAMA.x86_64-pc-linux-gnu-gfortran   = -O2   -w  
+FFLAGS_oasd.x86_64-pc-linux-gnu-gfortran   =  -O0 
+FFLAGS_csvdc.x86_64-pc-linux-gnu-gfortran  = -g 
+CFLAGS.x86_64-pc-linux-gnu-gfortran        =
+MISCLIB.x86_64-pc-linux-gnu-gfortran       = ./obj/${HOSTTYPE}-${FORTRAN}/misc.a
+RANLIB.x86_64-pc-linux-gnu-gfortran        = ranlib
+MODULE.x86_64-pc-linux-gnu-gfortran      = 
+MODULE2.x86_64-pc-linux-gnu-gfortran       = 
+
+# GNU fortran compiler gfortran 5.4.0 on Cygwin  (June 2016)
+x86_64-pc-cygwin-gfortran:
+FC.x86_64-pc-cygwin-gfortran	     = gfortran  
+CC.x86_64-pc-cygwin-gfortran		 = gcc
+FC90.x86_64-pc-cygwin-gfortran	     = gfortran
+FFLAGS.x86_64-pc-cygwin-gfortran        = -O2  -w  
+FFLAGS90.x86_64-pc-cygwin-gfortran        = -O2  -w  
+FFLAGS_warn.x86_64-pc-cygwin-gfortran   =  -O2 -u   -w 
+FFLAGS_GAMA_warn.x86_64-pc-cygwin-gfortran = -O2  -w 
+FFLAGS_GAMA.x86_64-pc-cygwin-gfortran   =     -w 
+FFLAGS_GAMA.x86_64-pc-cygwin-gfortran   = -O2   -w  
+FFLAGS_oasd.x86_64-pc-cygwin-gfortran   =  -O0 
+FFLAGS_csvdc.x86_64-pc-cygwin-gfortran  = -g 
+CFLAGS.x86_64-pc-cygwin-gfortran        =
+MISCLIB.x86_64-pc-cygwin-gfortran       = ./obj/${HOSTTYPE}-${FORTRAN}/misc.a
+RANLIB.x86_64-pc-cygwin-gfortran        = ranlib
+MODULE.x86_64-pc-cygwin-gfortran      = 
+MODULE2.x86_64-pc-cygwin-gfortran       = 
 
 # GNU fortran compiler gfortran 5.2 on Mac OS  (Oct 2015)
 x86_64-gfortran:

@@ -16,7 +16,7 @@ computing 2D marginal PPD between parameters  1 and  2
  number of ranges           1
  number of bartlett estimators           1
   ncurv=           1 nbart=           1
- 
+
   parameters to be optimized:
                    physparm     layer  min.val  max.val   del.val   nbit  ndig
   1 Water sound speed (m/s   2   1   1497.50   1502.50      0.10    6   51
@@ -25,16 +25,16 @@ computing 2D marginal PPD between parameters  1 and  2
   4 Source depth (m)         8   1      0.01    100.00      2.00    6   51
  Size of the search space: 10**  6.83
   uses snap as forward model
- 
+
  Calling SNAP
  flagpu           1
-  Frequency:   250.0000    
-  R1,R2   1.800000       1.800000    
-  SCATT(1),SCATT(2)   0.000000E+00   0.000000E+00
-  H0,H1   100.000000000000        100.000000000000     
+  Frequency:   250.000000    
+  R1,R2   1.79999995       1.79999995    
+  SCATT(1),SCATT(2)   0.00000000       0.00000000    
+  H0,H1   100.00000000000000        100.00000000000000     
   ND0,ND1           2           2
-  BETA(1),BETA(2),BETA(3)  0.2000000      0.2000000       0.000000E+00
-  c2,c2s   1750.000       0.000000E+00
+  BETA(1),BETA(2),BETA(3)  0.200000003      0.200000003       0.00000000    
+  c2,c2s   1750.00000       0.00000000    
  z0,c0
   1     0.000  1499.400
   2   100.000  1481.600
@@ -44,13 +44,12 @@ computing 2D marginal PPD between parameters  1 and  2
   2   100.000  1750.000
 
   np           1
-  first reciever depth   5.000000    
-  ranges   9300.000    
+  first reciever depth   5.00000000    
+  ranges   9300.00000    
  number of sources           1
-  source depth,i   78.00000               1
-  ndep,rd,rdlow:           20   5.000000       100.0000    
- arrayshape:    0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00
-   0.000000E+00
+  source depth,i   78.0000000               1
+  ndep,rd,rdlow:           20   5.00000000       100.000000    
+ arrayshape:    0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
   multistatic:  F
   tilt:  F
   mbeam:    F
@@ -58,15 +57,15 @@ computing 2D marginal PPD between parameters  1 and  2
   iscale:             0
   xplane:             0
  freq,number of modes           1          26
-  initial fitness   1.578465E-04
- 
-  crossover probability      0.8000000    
-  mutation  probability       5.000000E-02
-  update    probability      0.5000000    
-  number of iterations             1000
+  initial fitness   1.57859875E-04
+
+  crossover probability      0.800000012    
+  mutation  probability       5.00000007E-02
+  update    probability      0.500000000    
+  number  of iterations            1000
   size   of populations              32
   number of populations              10
- 
+
  setting model for maxppd parameters
  freq,number of modes           1          26
  setting model for mean parameters
@@ -74,25 +73,24 @@ computing 2D marginal PPD between parameters  1 and  2
   Calling forwardmodel with best model
  freq,number of modes           1          26
  freq,number of modes           1          26
-  best obtainable theoretical fit   9.420984E-05
-  best fit (best, ppd, mean)   1.652139E-04   1.038365E-02   1.863016E-04
+  best obtainable theoretical fit   9.40191312E-05
+  best fit (best, ppd, mean)   1.65782418E-04   4.31436859E-02   4.44040459E-04
 
-                                best-of all  most likely     mean   std-dev
-  1 Water sound speed (m/s)    1  1499.500     1499.500  1499.339     0.113
-  2 Water sound speed (m/s)    2  1481.700     1481.800  1481.541     0.115
-  3 Source range (m)           1  9300.000     9300.000  9300.000     0.000
-  4 Source depth (m)           1    78.002       78.002    78.002     0.000
- 
+                               best of all  most likely      mean   std-dev
+  1 Water sound speed (m/s)    1  1499.500     1499.800  1499.330     0.129
+  2 Water sound speed (m/s)    2  1481.700     1481.800  1481.514     0.120
+  3 Source range (m)           1  9300.000     9300.000  9299.999     0.000
+  4 Source depth (m)           1    78.002       78.002    78.002     0.001
+
   Deviation from initial model:
-  1 Water sound speed (m/s)        0.100        0.100    -0.061     0.113
-  2 Water sound speed (m/s)        0.100        0.200    -0.059     0.115
-  3 Source range (m)               0.000        0.000     0.000     0.000
-  4 Source depth (m)               0.002        0.002     0.002     0.000
- Bartlett power (dB) for freq   1     0.00
+  1 Water sound speed (m/s)        0.100        0.400    -0.070     0.129
+  2 Water sound speed (m/s)        0.100        0.200    -0.086     0.120
+  3 Source range (m)               0.000        0.000    -0.001     0.000
+  4 Source depth (m)               0.002        0.002     0.002     0.001
+ Bartlett power (dB) for freq   1    -0.00
   Calling forwardmodel with best model
-  ndep,rd,rdlow:           20   5.000000       100.0000    
- arrayshape:    0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00
-   0.000000E+00
+  ndep,rd,rdlow:           20   5.00000000       100.000000    
+  arrayshape:    0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
   multistatic:  F
   tilt:  F
   mbeam:    F
@@ -100,4 +98,4 @@ computing 2D marginal PPD between parameters  1 and  2
   iscale:             0
   xplane:             0
  freq,number of modes           1          26
- Postprossing, time:        1.390 secs.
+ Postprossing, time:        0.297 secs.

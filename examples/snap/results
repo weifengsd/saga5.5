@@ -155,3 +155,44 @@
  29 Water sound speed (m/s)   24  1526.65515     1526.630  1526.389
  30 Water sound speed (m/s)   25  1526.65771     1526.616  1526.384
  
+ sspmis_a   from the matched field workshop 93                                  
+ ***************
+  best obtainable theoretical fit   9.40191312E-05
+  best fit (best, ppd, mean)   1.65782418E-04   4.31436859E-02   4.44040459E-04
+
+                               best of all  most likely      mean   std-dev
+  1 Water sound speed (m/s)    1  1499.500     1499.800  1499.330     0.129
+  2 Water sound speed (m/s)    2  1481.700     1481.800  1481.514     0.120
+  3 Source range (m)           1  9300.000     9300.000  9299.999     0.000
+  4 Source depth (m)           1    78.002       78.002    78.002     0.001
+
+ [A26-1417-2f170AT] Elba Test case                                              
+ ***************
+  best obtainable theoretical fit  -1.52969733E-07
+  best fit (best, ppd, mean)   3.99012417E-02   4.74101566E-02   4.36884239E-02
+
+                               best of all  most likely      mean   std-dev
+  1 Source range (m)           1  5381.890     5381.890  5374.040     0.006
+  2 Source depth (m)           1    74.567       74.252    74.413     0.007
+  3 Sediment sound speed (m/s) 1  1516.929     1518.504  1503.429     0.163
+  4 Sediment sound speed (m/s) 2  1563.780     1563.780  1562.239     0.171
+  5 Bottom sound speed (m/s)   1  1595.669     1575.984  1580.468     0.117
+  6 Water depth (m)            1   127.244      127.008   127.395     0.320
+  7 Receiver depth (m)         1   112.055      111.866   111.578     0.185
+  8 Sediment density (g/cm^3)  1     1.953        2.000     1.939     0.129
+  9 Bottom density (g/cm^3)    1     2.145        2.145     2.042     0.246
+ 10 Attenuation (dB/\lambda)   1     0.123        0.094     0.093     0.147
+ 11 Attenuation (dB/\lambda)   2     0.198        0.091     0.201     0.221
+ 12 Sediment depth (m)         1     9.764        9.764     6.113     0.263
+
+test  comparison with oases and snap                                            
+ ***************
+  best obtainable theoretical fit   0.00000000    
+  best fit (best, ppd, mean)   9.51340837E-07   9.51340837E-07   1.08228471E-06
+
+                               best of all  most likely      mean   std-dev
+  1 Source range (m)           1  6263.779     6263.779  6269.281     0.004
+  2 Source depth (m)           1    50.630       50.630    50.663     0.012
+  3 Sediment sound speed (m/s) 1  1550.000     1550.000  1549.549     0.007
+  4 Sediment sound speed (m/s) 2  1600.000     1600.000  1597.106     0.030
+
