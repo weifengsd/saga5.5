@@ -1,0 +1,126 @@
+    This is an example of how to do Match Field Processing using multiple
+frequencies with a Horizontal Line Array using real data.  The data is from
+SWellEx-96 J131 23:46:00.  At this time the source was at a range of 2080 m
+and a depth of 60m. The HLA was deployed with a line of bearing of 34.5 degrees
+with a bow of -15 meters.  These four parameters, source range, source depth,
+array bearing, and array bow will be searched for in this example.
+   Line of Bearing is calculated from Element #1 to the last element. For the 
+HLA array Element #1 is the southernmost element.  SAGA fixes the source
+location along the negative Y axis. Only when the source is at this location
+will you get the exact line of bearing.  When the source is not on the -Y axis
+the offset between the source and the -Y axis will be represented in the
+the array bearing computed by SAGA.  In this example the line of bearing from
+the source to Element 1 of the HLA is 355 degrees.  This will be reflected as
+a 5 degree increase (to 39.5 degrees) in the array bearing computed by SAGA.
+   There are a number of ways to input an array shape into SAGA, this example
+uses the 'x' option. So the interelement spacing is defined in the input 
+parameter file.  The array will be approximated by a parabola so that bow
+values can be searched.  
+
+   The script runSAGA.scr will first obtain the input data in a form that SAGA
+likes.  See the ReadMe in the subdirectory 'fftData' for details on this 
+process.  Also the data file needs to be copied from the mpl website before
+this section is run.  Read the files 'getData.txt' and 'ReadMe' in the 
+subdirectory 'fftData' for details of how to do this.
+   The script runSAGA.scr first converts the CSDM data file in fftData to a 
+SAGA formatted data file. This is done in Matlab with a SAGA provided M-file.
+This M-file expects to have a single input file for each frequency being 
+processed. This M-file produces an output file called 'cov_dpss.in' The 
+runSAGA.scr script then renames this file to be 'cov.in'.   This is the input
+data file for SAGA. Edit the M-file 'convert_to_saga.m' to modify the list of
+frequencies that this M-file will process.  
+   Now that the data is set as the input file, run SAGA to produce the 
+inversion data using the input parameter file 'horiz.dat'.  The post-processor 
+POST is run to compute the 'a posteriori' distribution.  POST also appends a
+text copy of the results to the file 'results'.
+      The script runs SAGA a second time using the input parameter file
+'horizC.dat' to produce a contour plot of source range verses array tilt.
+The third run of SAGA produces the source range verses source depth using
+the parameter file horizC2.dat.  The ambiguity surfaces plotted are generated
+with MFP processing using only the first two parameters in the input file.
+Any additional search parmeters are not searched, but default to their inital
+value.  SAGA outputs an input parameter file with these best fit values set
+for the initial values.  This script demonstrats how to use this file to
+always produce ambiguity surfaces using the best fit solution results.
+   Matlab is run to generate the three postscript plots.  Using the provided
+M-files in the SAGA matlab directory generate the inversion plot and the
+contour plots. 
+      The inversion plot shows a panel for each of the four parameters searched.
+The plot shows that source range well determined, and the source depth results
+are closely grouped between 63-65 meters . The array azimuth and array bow both
+have a bimodal distribution.  There is not enough information to solve for the
+left-right ambiguity.  
+
+   The results file looks like:
+>>m results
+SAGA example 7 , HLA real data example                                          
+ ***************
+  best obtainable theoretical fit  4.4412155E-02
+  best fit (best, ppd, mean)  0.3956003      0.4015373      0.9725764    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2211.024     2211.024  2232.839     0.047
+  2 Source depth (m)           1    63.701       62.992    63.783     0.054
+  3 Array out of plane param   5    42.520       42.520   148.695     0.372
+  4 Array out of plane param   2   -13.386      -13.701    -3.188     0.320
+
+
+    The best fit result from SAGA does pick close to the correct azimuth and
+bow for the array, expecting 39.5 degrees with a -15 m bow. SAGA picked an
+azimuth of 42.5 degrees with a -13.4.   The range and source depth are again
+affected by the mirage effect caused by the differences in bathymetry. The
+water depth at the HLA is 213 m , the water depth under the source is 198 m.
+A difference of 7.13 %.  Thus the values need to be reduced by this amount 
+giving a range of 2211.024 / 1.0713 = 2082.7 m and for the source depth 
+of 63.701 / 1.0713 = 59.5 m.  
+
+   The contour plots always shows the first two optimization parameters 
+plotted with the first search parameter as the X-axis and the second 
+search parameter as the Y-axis.  
+   The first plot shows the source range verses source depth. Normally for
+a HLA to have the same accuracy as a VLA you need to have the HLA be 4x 
+longer then the VLA.  The VLA from the previous examples is 120m long, so
+the HLA would need to be 480 m long to have the same quality of results.
+The HLA deployed was only 240 meters long. This difference is represented
+in the ambiguity surface in a larger target location and a peak level to
+background level difference that is much smaller ( ~1.5 dB for HLA verses
+closer to 5 dB for the VLA ).
+   The second ambiguity plot show the array azimuth verses array bow. This 
+plot shows the results to be well determined except that SAGA does not have
+enough information to clearly differentiate between the true array shape and
+the negative symetry solution. 
+
+
+
+
+
+Summary of this directory:
+
+scripts:
+runSAGA.scr - script to run SAGA and produce 'a posteriori' distribution plot
+              and contour plot.
+
+input files:
+horiz.dat  - SAGA input parameter file (options set to compute inversion )
+horizC.dat - SAGA input parameter file (generated from results of horiz.dat run)
+horizC2.dat - SAGA input parameter file (generated from results of horiz.dat run)
+cov.in - input data for SAGA
+
+results output by SAGA:
+results - results of both runs in test file format
+SAGAcontour.ps - contour postscript plot
+SAGAcontour2.ps - contour postscript plot
+SAGAscatter.ps - 'a posteriori' distribution plot (inversion plot)
+
+
+directory:
+csdm - subdirecotry that contains the CSDMs computed for each frequency.
+       these files are generated from the data in the directory fftData
+       by the script mkCSDM.scr
+fftData - subdirectory containing the original time series
+          data. Information:  GetData.txt and ReadMe
+M-files:
+convert_to_saga.m - Matlab script to convert SIO data file format CSDM file
+                    to the format that SAGA can read.
+write_covmat.m - Matlab script used by convert_to_saga.m to write out the
+                 covariance matrix.

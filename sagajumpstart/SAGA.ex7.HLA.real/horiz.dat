@@ -1,0 +1,73 @@
+SAGA example 7 , HLA real data example
+b c   		! options 
+
+2000  64  20		! niter, q, npop
+0.8 0.5 0.05  0		! px,pu,pm
+x                       ! snap options
+13 20                  ! freq  max_no_modes
+49 64 79 94 112 130 148 166 201 235 283 338 388
+213.0,0.,0.,0		! water depth scatt(1),scatt(2),beta(0)
+    0.       1521.94    ! ssp
+   10.100    1518.77
+   19.800    1499.80
+   30.300    1495.00
+   60.500    1490.78
+   90.700    1489.29 
+  120.000    1487.86
+  140.968    1488.93
+  150.454    1488.88
+  160.212    1489.00
+  170.184    1488.42
+  180.380    1488.60
+  189.979    1488.47
+  200.162    1488.26
+  213.000    1488.26
+23.5 1.76 0.200		! sediment thickness, r1, beta(1)
+0.0 1572.
+23.5  1593.
+2.06, 0.10, 1880.	! bottom r2 beta(2),c2
+0., 0.			! bottom shear beta(3) c2s
+60			! source depth
+213.0 213.0 27 0    	! rec depth
+
+0.00     0               ! Individual receivers
+3.45960  0
+7.23110  0
+11.4378  0
+16.0183  0
+26.1836  0
+32.0376  0
+46.1737  0
+54.5455  0
+63.6685  0
+73.6101  0
+84.3932  0
+96.1528  0
+106.644  0 
+149.568  0 
+152.942  0 
+156.624  0 
+164.993  0 
+169.999  0 
+175.549  0 
+181.717  0 
+196.410  0 
+202.964  0 
+210.339  0 
+217.297  0 
+225.344  0 
+242.881  0      
+
+100 -15			! array shape parameters
+90 90 180 		! angles: rotation1 rotation2 rotation3
+
+ 1					! number of ranges
+ 1700					! receiver range
+
+ 4
+ 9  1  0400 5000  128                   ! source range
+ 8  1    50   80  128                   ! source depth
+ 21 5     0  360  128                   ! array shp [deg] 
+ 21 2   -20   20  128                   ! array shp top of parabola [m]
+
+ 21 4  90 180  256                      ! array shp [deg] azimuth

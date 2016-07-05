@@ -1,0 +1,9 @@
+#  data generated so process with SAGA (first time through)
+$SAGADIR/bin/saga vert snap cov
+$SAGADIR/bin/post vert snap cov
+
+#  data generated to process with SAGA (first time through)
+# source range verses source depth
+$SAGADIR/bin/saga vertC snap cov
+# array azimuth verses array bow
+$SAGADIR/bin/saga vertC2 snap cov

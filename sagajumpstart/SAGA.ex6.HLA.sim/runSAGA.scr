@@ -1,0 +1,71 @@
+
+#  run SAGA the first time to generate synthetic data
+$SAGADIR/bin/saga horiz snap 
+mv horiz.obs horiz.in
+#  produce inversion result
+$SAGADIR/bin/saga horiz snap
+#  run post to prepare results to be plotted
+$SAGADIR/bin/post horiz snap
+
+#  run SAGA the first time to generate synthetic data
+$SAGADIR/bin/saga horizC snap 
+mv horizC.obs horizC.in
+#  produce source range verses source depth ambiguity surface
+$SAGADIR/bin/saga horizC snap 
+
+#  produce contour plot using optimized parameters found in inversion
+#   change first two search parameters so ambiguity surface will now
+#   show array azimuth and array bow.
+
+#  run SAGA the first time to generate synthetic data
+$SAGADIR/bin/saga horizC2 snap
+mv horizC2.obs horizC2.in
+#  produce array azimuth verses array bow ambiguity surface
+$SAGADIR/bin/saga horizC2 snap
+#
+
+matlab << INN
+% path(path,'/kingcone0/dave/SAGA/SwellEx96/saga51/matlab') % enter your saga matlab path here
+plotsaga
+horiz
+print('-dpsc','SAGAscatter.ps')
+cmin = -10
+cmax =   0
+figure
+contsaga
+horizC
+print('-dpsc','SAGAcontour.ps')
+figure
+contsaga
+horizC2
+print('-dpsc','SAGAcontour2.ps')
+pause(10)
+exit
+INN
+#
+# modify axis for scatter plot
+ex SAGAscatter.ps << INN
+/Out of plane parameter
+s/Out of plane parameter/Array Azimuth (degrees) /
+/Out of plane parameter
+s/Out of plane parameter/Array Bow (meters) /
+wq
+INN
+#
+# modify axis for contour plot
+ex SAGAcontour2.ps << INN
+/Array out of plane param
+s/Array out of plane param/Array Azimuth (degrees) /
+/Array out of plane param
+s/Array out of plane param/Array Bow (meters) /
+wq
+INN
+
+# clean up
+#rm fort.* snap*dat horiz*.in horiz*.obs
+#rm horiz*.mat horiz*bdr horiz*cdr horiz*.m horiz*.out horiz.cor horiz.ext
+#rm horiz.p* horiz.trf results.m
+
+gs -landscape SAGAscatter.ps
+gs -landscape SAGAcontour.ps
+gs -landscape SAGAcontour2.ps

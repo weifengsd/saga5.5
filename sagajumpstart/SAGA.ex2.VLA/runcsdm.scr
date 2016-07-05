@@ -1,0 +1,23 @@
+#  script to generate covariance matrix for SAGA with real data using a VLA 
+
+# remove old data, if any
+rm cov.in
+
+# now compute the covariance matrix from data and convert covariance matrix to SAGA format 
+matlab -nodisplay << INN >> list
+cd fftData
+compute_csdm % program file name to compute and write out covariance matrix
+quit
+
+#matlab << INN
+# path(path,'/kingcone0/dave/SAGA/SwellEx96/saga51/matlab') % enter your saga matlab path here and uncomment the line.
+#plotsaga
+#vert
+#print('-dpsc','SAGAscatter.ps')
+#cmin = -15
+#cmax = 0
+#contsaga
+#vertC
+#print('-dpsc','SAGAcontour.ps')
+#exit
+#INN

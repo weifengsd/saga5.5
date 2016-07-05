@@ -1,0 +1,17 @@
+The SIO data file used is 'J1312340.hla.north.sio'.  In this case  data
+starting at J131 23:46:00 were processed and FFTed with 11 bins extracted 
+(frequency of interest plus 5 on either side in case
+of doppler shift ) for each frequency of interest.
+
+The out.freq.gs plots show if a consistent signal is received. The expected
+plot would show that a single bin or 2 adjacent bins(if signal split
+between two bins) contains most of the signal energy.  The main
+purpose is to track a frequency through doppler shifts
+and turns where the frequency of interest will shift a few bins.  
+
+The file ffttime.'frequency' contains the maximum value at each time 
+slice for each array element for the given frequency. The file
+is complex. The number of channels in the file is the number of array
+elements times 2 (complex data).  The number of samples in the file
+is the number of FFT's ( with 50% overlap ) that are able to be 
+performed on the original data file.

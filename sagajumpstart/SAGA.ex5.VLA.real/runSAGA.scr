@@ -1,0 +1,6 @@
+# run saga
+saga vert snap cov
+post vert snap cov
+saga vertC snap cov
+saga vertC2 snap cov
+# saga vertC and saga vertC2  generate the contour plots

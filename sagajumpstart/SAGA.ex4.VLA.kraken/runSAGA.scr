@@ -1,0 +1,54 @@
+
+set angle = 0
+
+#  first time through need to run saga twice
+#  first time is sets up proper parameter files
+#../../saga51/bin/saga horiz_$angle snap
+#cp horiz_$angle.obs horiz_$angle.in
+#
+# now generate data externally
+matlab << INN
+convert_to_saga
+quit
+INN
+
+mv cov_dpss.in cov.in
+#cp horiz.orig.dat horiz.dat
+
+#  data generated so process with SAGA (first time through)
+$SAGADIR/bin/saga vert snap cov
+$SAGADIR/bin/post vert snap cov
+
+#  data generated to process with SAGA (first time through)
+# source range verses source depth
+$SAGADIR/bin/saga vertC snap cov
+# array azimuth verses array bow
+$SAGADIR/bin/saga vertC2 snap cov
+
+matlab << INN
+path(path,'$SAGADIR/matlab') % enter your saga matlab path here
+plotsaga
+vert
+print('-dpsc','SAGAscatter.ps')
+cmin = -10
+cmax =  -0
+figure;
+contsaga
+vertC
+print('-dpsc','SAGAcontour.ps')
+figure;
+contsaga
+vertC2
+print('-dpsc','SAGAcontour2.ps')
+exit
+INN
+
+# clean up
+rm fort.* snap*dat cov.in
+rm vert*.mat vert*bdr vert*cdr vert*.m vert*.out vert.cor vert.ext
+rm vert.p* vert.trf results.m *.obs
+
+
+gs -landscape SAGAscatter.ps
+gs -landscape SAGAcontour.ps
+gs -landscape SAGAcontour2.ps

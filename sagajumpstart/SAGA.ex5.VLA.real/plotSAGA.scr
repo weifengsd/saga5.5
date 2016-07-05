@@ -1,0 +1,18 @@
+matlab << INN
+% path(path,'/kingcone0/dave/SAGA/SwellEx96/saga51/matlab') % enter your saga matlab path here
+plotsaga
+vert
+print('-dpsc','SAGAscatter.ps')
+cmin = -15
+cmax = 0
+figure;
+contsaga
+vertC
+print('-dpsc','SAGAcontour.ps')
+figure;
+contsaga
+vertC2
+print('-dpsc','SAGAcontour2.ps')
+pause(30)
+exit
+INN

@@ -1,0 +1,93 @@
+    This is an example of how to do Match Field Processing using multiple
+frequencies with a Horizontal Line Array (simulated).  This simulation matches
+the SWellEx96 Event S5 data set at J131 23:46.  The source is at a range
+of 2080 km and depth of 60m.  The HLA was deployed with a line of bearing of 
+34.5 degrees with a bow of -15 meters.  The four parameters, source range, 
+source depth, array bearing, and array bow will be searched for in this example.
+   Line of Bearing is calculated from Element #1 to the last element. For the 
+HLA array Element #1 is the southernmost element.  
+   There are a number of ways to input an array shape into SAGA, this example
+uses the 'x' option. So the interelement spacing is defined in the input 
+parameter file.  The array will be approximated by a parabola with the specified
+interelement spacing so that bow values can be searched.  
+
+   The script runSAGA.scr will first run SAGA to generate the simulated data
+file. Then copy the input file from a *.obs extension to a *.in extension.
+This is done for each input parameter file.
+   Now that the data is set as the input file, run SAGA to produce the 
+inversion data using the input parameter file 'horiz.dat'.  The post-processor 
+POST is run to compute the 'a posteriori' distribution.  POST also appends a
+text copy of the results to the file 'results'.
+      The script runs SAGA a second set of times using the input parameter file
+'horizC.dat' to produce a contour plot of source range verses array tilt.  The 
+third set of runs of SAGA produces the source range verses source depth using
+the parameter file horizC2.dat.  The ambiguity surfaces plotted are generated
+with MFP processing using only the first two parameters in the input file.
+Any additional search parmeters are not searched, but default to their inital
+value.  SAGA outputs an input parameter file with these best fit values set
+for the initial values.  This script demonstrats how to use this file to
+always produce ambiguity surfaces using the best fit solution results.
+   Matlab is run to generate the three postscript plots.  Using the provided
+M-files in the SAGA matlab directory generate the inversion plot and the
+contour plots. 
+      The inversion plot shows a panel for each of the four parameters searched.
+The plot shows that source range and source depth well determined.  The array 
+azimuth and array bow both have a bimodal distribution.  There is not enough 
+information to solve for the left-right ambiguity.  
+
+   The results file looks like:
+>>m results
+SAGA example 6 , HLA simulation
+ ***************
+  best obtainable theoretical fit  2.6959244E-08
+  best fit (best, ppd, mean)  6.3673586E-02  6.3677058E-02  0.9627493
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2066.142     2066.142  2066.142     0.000
+  2 Source depth (m)           1    60.157       60.157    60.143     0.012
+  3 Array out of plane param   5   320.315       39.685   179.774     0.390
+  4 Array out of plane param   2    14.961      -14.961    -0.023     0.375
+
+
+    The best fit result from SAGA does pick close to the correct azimuth and
+bow for the array, expecting 39.5 degrees with a -15 m bow. SAGA picked an
+azimuth of 320.3 degrees with a -15.0.   SAGA picked the negative symetry
+solution over the desired solution.
+   The contour plots always shows the first two optimization parameters 
+plotted with the first search parameter as the X-axis and the second 
+search parameter as the Y-axis.  
+   The first plot shows the source range verses source depth. Normally for
+a HLA to have the same accuracy as a VLA you need to have the HLA be 4x 
+longer then the VLA.  The VLA from the previous examples is 120m long, so
+the HLA would need to be 480 m long to have the same quality of results.
+The HLA deployed was only 240 meters long. This difference is represented
+in the ambiguity surface in a larger target location and a peak level to
+background level difference that is much smaller ( ~2.5 dB for HLA verses
+closer to 5 dB for the VLA ) compared to the VLA results.
+   The second ambiguity plot show the array azimuth verses array bow. This 
+plot shows the results to be well determined except that SAGA does not have
+enough information to clearly differentiate between the true array shape and
+the negative symetry solution. 
+
+
+Summary of this directory:
+
+scripts:
+runSAGA.scr - script to run SAGA and produce 'a posteriori' distribution plot
+              and contour plot.
+
+input files:
+horiz.dat  - SAGA input parameter file (options set to compute inversion )
+horizC.dat - SAGA input parameter file (generated from results of horiz.dat run)
+horizC2.dat - SAGA input parameter file (generated from results of horiz.dat run)
+
+results output by SAGA:
+results - results of both runs in test file format
+SAGAscatter.ps - 'a posteriori' distribution plot (inversion plot)
+SAGAcontour.ps - plot of source range verses source depth
+SAGAcontour2.ps - plot of array azimuth verses array bow
+
+
+M-files:
+write_covmat.m - Matlab script used by convert_to_saga.m to write out the
+                 covariance matrix.

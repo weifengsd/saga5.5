@@ -1,0 +1,114 @@
+   This is a simple example of how to run SAGA with a vertical array on
+a multiple frequencies ( 49 Hz - 388 Hz )  The script runSAGA.scr will first 
+obtain the input data in a form that SAGA likes.  See the ReadMe in the 
+subdirectory 'fftData' for details on this process.  This section is currently 
+commented out to increase the speed of the example.  Also the data file needs 
+to be copied from the mpl website before this section is run.  Read the file 
+'getData.txt' in the subdirectory 'fftData' for details of how to do this.
+
+   The script runcsdm.scr first converts the CSDM data file in fftData
+to a SAGA formatted data file. This is done in Matlab with a SAGA provided
+M-file.  This M-file expects to have a single input file for each frequency
+being processed. This M-file produces an output file called 'cov.in'
+This is the input data file for SAGA.  
+
+   Now that the data is set as the input file, run SAGA to produce the 
+inversion data using the input parameter file 'vert.dat'.  The 
+post-processor POST is run to compute the 'a posteriori' distribution. 
+POST also appends a text copy of the results to the file 'results'.
+   The script runs SAGA a second time using the input parameter file
+'vertC.dat' to produce a contour plot of source range verses array tilt.
+The third run of SAGA produces the source range verses source depth using
+the parameter file vertC2.dat.  The ambiguity surfaces plotted are generated
+with MFP processing using only the first two parameters in the input file.
+Any additional search parmeters are not search, but default to their inital
+value.  For the optimal MFP search results it is important to have the 
+initial values in the search parameter files for the contour plots be
+set to best fit results from the 'a posteriori' distribution.
+   Matlab is run to generate the three postscript plots.  Using the provided
+M-files in the SAGA matlab directory generate the inversion plot and the
+contour plots. 
+
+   The inversion plot shows a panel for each parameter searched. The plot
+shows that source range and depth are well determined. The tilt panel shows
+a less peaked but reasonably well defined result for the tilt.  The peak
+for the tilt is at -1.429 m.  This peak does show clearly on the contour
+plot.  The second contour plot shows the source depth verses range.  It has
+a defined peak at a slightly longer range between 60 and 70 meters depth.  The
+value that SAGA chose is 64.286 m deep for the source depth.  This depth
+is a bit deeper than expected 
+
+   The contour plot always shows the first two optimization parameters 
+plotted with the first search parameter as the X-axis and the second 
+search parameter as the Y-axis.  For optimal MFP results remaining
+parameters should have their inital values set to the results of the
+'a posteriori' best fit.
+
+   The results file looks like:
+>>m results
+SAGA jumpstart Example 5,  VLA processing (inversion and MFP) with Real Data    
+ ***************
+  best obtainable theoretical fit  0.2508154    
+  best fit (best, ppd, mean)  0.4566793      0.4566793      0.5489922    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  3142.857     3142.857  3184.718     0.053
+  2 Source depth (m)           1    64.286       64.286    66.125     0.040
+  3 Array tilt (m)             1    -1.429       -1.429    -1.474     0.057
+
+
+The tilt of -1.429 meters is equivalent to  -0.682 degrees
+
+      theta = arcsin(array_tilt/array_length)
+            = arcsin( -1.429 m / 120 m )
+            = arcsin( -0.01191 )
+            = -0.682 degrees
+
+This matches well to the expected tilt of between 0.5 and 1.0 degrees
+for this time period. It is important to keep in mind that tilt in
+SAGA is the horizontal deviation at the last reciever measured in meters.
+
+For this data set the source range is 3 km and the source depth is 60 m.
+The source range and depth are longer and deeper than expected.  This
+is due to the mirage effect caused by different bathymetries. In this
+case the source is in 200m of water and the array is in 216.5 meters
+of water.  A difference of ~7.7 %  thus the values need to be reduced
+by this amount giving a range of 3142.857 / 1.077 = 2918.2 m and
+for the source depth of 64.286 / 1.077 = 59.690 m.  
+
+In example 2 ( single frequency ) after correcting for the mirage effect
+the range was very close but the depth was off by almost 10 meters. With
+13 frequencies the depth matches and the range is still within one range
+cell.
+
+To learn more about the mirage effect see the section on the mirage
+effect in the covert calibration example notebook. Also the paper
+'Mirages in shallow water matched field processing' by Gerald D'Spain,
+JASA June 1999.
+
+scripts (to run in order):
+runcsdm.scr  - script to generate covariance matrix and write it to cov.in using real data
+runSAGA.scr - script to run SAGA and produce data for 'a posteriori' distribution plot
+               and contour plot. 
+plotSAGA.scr - script to produce the 'a posteriori' distribution plot and contour plot 
+               using plotsaga and contsaga in matlab.
+
+input files:
+vert.dat  - SAGA input parameter file ( options set to compute inversion )
+vertC.dat - SAGA input parameter file ( options set to produce contour plot )
+cov.in - input data for SAGA
+
+results output by SAGA:
+results - results of both runs in test file format
+SAGAcontour.ps - contour postscript plot
+SAGAscatter.ps - 'a posteriori' distribution plot (inversion plot)
+
+
+directory:
+fftData - subdirectory that contains the original time series
+          data. Contains the matlab file compute_csdm.m to compute the covariance matrix.
+
+M-files:
+compute_csdm.m - Matlab script to compute the covariance matrix.
+write_covmat.m - Matlab script used by convert_to_saga.m to write out the
+                 covariance matrix.

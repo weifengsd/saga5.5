@@ -1,0 +1,11 @@
+The data file is obtained from data file J1312340.hla.north.sio (346 MB)
+
+
+To create the sio data file needed for this processing
+need to download the data file J1312340.hla.north.sio (346 MB)
+from the website http://www.mpl.ucsd.edu/swellex96/s5.htm
+once this file is obtained, you need the file sioread.m to read the data
+(also provided in this directory). 
+
+You can process the data to obtain the covariance matrix and write to the
+SAGA format using write_covmat.m.

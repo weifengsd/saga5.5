@@ -1,0 +1,42 @@
+SAGA jumpstart Example,  search for src range, depth, tilt  range Nincr=128 
+b c                   ! options 
+
+  2000  64  10          ! niter, q, npop
+  0.8 0.5 0.05  0       ! px,pu,pm
+t                       ! snap options
+ 13 100                  ! freq  max_no_modes
+49 64 79 94 112 130 148 166 201 235 283 338 388
+ 216.5,0.,0.,0           ! water depth scatt(1),scatt(2),beta(0)
+     0.       1521.94    ! ssp
+    10.100    1518.77
+    19.800    1499.80
+    30.300    1495.00
+    60.500    1490.78
+    90.700    1489.29
+   120.000    1487.86
+   140.968    1488.93
+   150.454    1488.88
+   160.212    1489.00
+   170.184    1488.42
+   180.380    1488.60
+   189.979    1488.47
+   200.162    1488.26
+   216.500    1488.26
+ 23.5 1.76 0.2            ! sediment thichness, r1, beta(1)
+  0.0  1572.
+ 23.5  1593.
+ 2.1, 0.06, 1880.       ! bottom r2 beta(2),c2
+ 0.,0.                  ! bottom shear beta(3) c2s
+ 60                     ! source depth
+0 0 -21 -2.0             ! rec depth
+  94.125 99.755 105.38 111.00 116.62 122.25 127.88
+  139.12 144.74 150.38 155.99 161.62 167.26 172.88
+  178.49 184.12 189.76 195.38 200.99 206.62 212.25
+
+ 1                      ! number of ranges
+ 3000                   ! receiver range
+
+ 3                      ! nparm                 
+ 9  1  1000 10000 128    ! source range           
+ 19 1   -10    10 128    ! array shp tilt 
+ 8  1    10   200 128    ! source depth           

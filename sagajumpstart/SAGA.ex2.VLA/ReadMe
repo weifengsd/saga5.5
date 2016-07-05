@@ -1,0 +1,112 @@
+   This is a simple example of how to run SAGA with a vertical array on
+a single frequency ( 388 Hz ).  This example uses real data from the SWellEx-96
+experiment.  The script runSAGA.scr will first obtain the input data in a form
+that SAGA likes. Also the data file needs to be copied from the mpl website
+before this section is run.  Read the file 'getData.txt' in the subdirectory
+fftData for details on how to do this.
+   In this example SAGA is using the 't' option for the forward model snap.
+This option measures the tilt as the horizontal deviation at the last receiver
+measured in meters. In SwellEx-96 the VLA was moored to the bottom. But the last
+element is also the bottom element.  This would mean that when computing the
+tilt the bottom of the array would move instead of the top.  To better 
+replicate the real world case need to have the last element be at the top
+of the array so SAGA will move the top of the array when computing tilt.  
+   To make this change the receiver locations need to be reversed in the
+files 'vert.dat' and 'vertC.dat' (input parameter files for SAGA). The receiver
+positions also need to be reversed in the 'convert_to_saga.m' M-file that makes
+the input data file for SAGA.  Lastly the order of the channels needs to be 
+reversed in order to keep the receiver depths matched up to the correct data 
+channels.  
+   The script runcsdm.scr first converts the CSDM data file in fftData
+to a SAGA formatted data file. This is done in Matlab with a SAGA provided
+M-file.  This M-file expects to have a single input file for each frequency
+being processed. This M-file produces an output file called 'cov.in'
+This is the input data file for SAGA. 
+   Now that the data is set as the input file, the script runSAGA.scr runs SAGA 
+to produce the inversion data using the input parameter file 'vert.dat'.  The 
+post-processor POST is run to compute the 'a posteriori' distribution. 
+POST also appends a text copy of the results to the file 'results'.
+   The script runs SAGA a second time using the input parameter file
+'vertC.dat' to produce a contour plot showing source range verse array tilt. 
+   Matlab is run to generate the two postscript plots with plotSAGA.scr  
+using the provided M-files in the SAGA matlab directory to generate the inversion plot and the
+contour plot. 
+   The inversion plot shows a panel for each parameter searched. The plot
+shows that source range and depth are well determined. The tilt panel shows
+a less peaked but reasonably well defined result for the tilt.  The peak
+for the tilt is at -1.811 m.  The contour plot shows the source range
+verses array tilt since these are the first two search parameters in the 
+input parameter file.
+   The contour plot always shows the first two optimization parameters 
+plotted with the first search parameter as the X-axis and the second search 
+parameter as the Y-axis.  Note that only one frequency is used as the highest 
+frequency available will be the one that is most sensitive to array tilt.  
+388 Hz was chosen as it was the highest frequency available in the real data. 
+
+   The results file looks like:
+
+SAGA jumpstart Example 2,  VLA processing (inversion) with Real Data            
+ ***************
+  best obtainable theoretical fit  0.3884194    
+  best fit (best, ppd, mean)  0.6709696      0.6709696      0.6648355    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  3204.724     3204.724  3211.038     0.009
+  2 Array tilt (m)             1    -1.811       -1.811    -1.762     0.018
+  3 Source depth (m)           1    74.882       74.882    74.689     0.020
+
+
+The tilt of -1.811 meters is equivalent to  -0.865 degrees
+
+      theta = arcsin(array_tilt/array_length)
+            = arcsin( 1.811 m / 120 m )
+            = arcsin( 0.015092 )
+            = 0.865 degrees
+
+This matches well to the expected tilt of between 0.5 and 1.0 degrees
+for this time period. It is important to keep in mind that tilt in
+SAGA is the horizontal deviation at the last reciever measured in meters.
+
+For this data set the source range is 3 km and the source depth is 60 m.
+The source range and depth are longer and deeper than expected.  This
+is due to the mirage effect caused by different bathymetries. In this
+case the source is in 200m of water and the array is in 216.5 meters
+of water.  A difference of ~7.7 %  thus the values need to be reduced
+by this amount giving a range of 3204.724 / 1.077 = 2975.6 m and
+for the source depth of 74.882 / 1.077 = 69.528 m.  The source depth is
+still a bit deep ( expecting 60 m ) but this is only one frequency.
+See examples 3, 4, and 5 for demonstrations of SAGA with multiple frequencies.  
+
+To learn more about the mirage effect see the section on the mirage
+effect in the covert calibration example notebook. Also the paper
+'Mirages in shallow water matched field processing' by Gerald D'Spain,
+JASA June 1999.
+
+
+summary of what is in the directory
+
+scripts (to run in order):
+runcsdm.scr  - script to generate covariance matrix and write it to cov.in using real data
+runSAGA.scr - script to run SAGA and produce data for 'a posteriori' distribution plot
+               and contour plot. 
+plotSAGA.scr - script to produce the 'a posteriori' distribution plot and contour plot 
+               using plotsaga and contsaga in matlab
+
+input files:
+vert.dat  - SAGA input parameter file ( options set to compute inversion )
+vertC.dat - SAGA input parameter file ( options set to produce contour plot )
+cov.in - input data for SAGA
+
+results output by SAGA:
+results - results of both runs in test file format
+SAGAcontour.ps - contour postscript plot
+SAGAscatter.ps - 'a posteriori' distribution plot (inversion plot)
+
+directory:
+fftData - subdirectory that shows how to obtain the original time series
+          data. Contains the matlab file compute_csdm.m to compute the covariance matrix.
+
+M-files:
+compute_csdm.m - Matlab script to compute the covariance matrix.
+write_covmat.m - Matlab script used by convert_to_saga.m to write out the
+                 covariance matrix.

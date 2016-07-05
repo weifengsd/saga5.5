@@ -1,0 +1,85 @@
+# 
+set verbose
+# create covariance matrix from processed results
+matlab << INN
+convert_to_saga
+exit
+INN
+mv cov_dpss.in cov.in
+
+#  produce inversion result
+$SAGADIR/bin/saga horiz snap cov
+#  run post to prepare results to be scatter plotted
+$SAGADIR/bin/post horiz snap cov
+#  produce contour plot using optimized parameters found in inversion
+cp snap.dat horizC.dat
+ex horizC.dat << INN
+2c
+C2 cb                   ! options
+.
+wq
+INN
+#
+$SAGADIR/bin/saga horizC snap cov
+
+cp horizC.dat horizC2.dat
+ex horizC2.dat << INN
+/number of ranges
+/5000
+.,.+3c
+          21           5  0.0000000E+00   360.0000             256
+          21           2  -20.00000       20.00000             256
+           9           1   400.0000       5000.000             256
+           8           1   50.00000       80.00000             256
+.
+wq
+INN
+
+$SAGADIR/bin/saga horizC2 snap cov
+#
+
+matlab << INN
+% path(path,'/kingcone0/dave/SAGA/SwellEx96/saga51/matlab') % enter your saga matlab path here
+plotsaga
+horiz
+print('-dpsc','SAGAscatter.ps')
+cmin = -10
+cmax =   0
+figure
+contsaga
+horizC
+print('-dpsc','SAGAcontour.ps')
+figure
+contsaga
+horizC2
+print('-dpsc','SAGAcontour2.ps')
+pause(10)
+exit
+INN
+#
+# modify axis for scatter plot
+ex SAGAscatter.ps << INN
+/Out of plane parameter
+s/Out of plane parameter/Array Azimuth (degrees) /
+/Out of plane parameter
+s/Out of plane parameter/Array Bow (meters) /
+wq
+INN
+#
+# modify axis for contour plot
+ex SAGAcontour2.ps << INN
+/Array out of plane param
+s/Array out of plane param/Array Azimuth (degrees) /
+/Array out of plane param
+s/Array out of plane param/Array Bow (meters) /
+wq
+INN
+
+# clean up
+rm fort.* snap*dat cov.in
+rm horiz*.mat horiz*bdr horiz*cdr horiz*.m horiz*.out horiz.cor horiz.ext
+rm horiz.p* horiz.trf results.m
+
+gs -landscape SAGAscatter.ps
+gs -landscape SAGAcontour.ps
+gs -landscape SAGAcontour2.ps

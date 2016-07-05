@@ -1,0 +1,57 @@
+#
+#
+# 
+set verbose
+
+# remove old data
+rm vert*.obs vert*.in snap.dat
+
+# run SAGA first time to generate synthetic data
+$SAGADIR/bin/saga vert snap 
+mv vert.obs vert.in
+#
+#  produce inversion result
+$SAGADIR/bin/saga vert snap 
+$SAGADIR/bin/post vert snap 
+
+# run SAGA first time to generate synthetic data
+$SAGADIR/bin/saga vertC snap
+mv vertC.obs vertC.in
+# generate contour plot  range verses tilt
+$SAGADIR/bin/saga vertC snap
+
+# run SAGA first time to generate synthetic data
+$SAGADIR/bin/saga vertC2 snap
+mv vertC2.obs vertC2.in
+# generate contour plot  range verses source depth
+$SAGADIR/bin/saga vertC2 snap
+
+matlab << INN
+path(path,'$SAGADIR/matlab') % enter your saga matlab path here
+plotsaga
+vert
+print('-dpsc','SAGAscatter.ps')
+cmin = -10
+cmax =   0
+figure
+contsaga
+vertC
+print('-dpsc','SAGAcontour.ps')
+figure
+contsaga
+vertC2
+print('-dpsc','SAGAcontour2.ps')
+pause(10);
+exit
+INN
+
+gs -landscape SAGAscatter.ps
+gs -landscape SAGAcontour.ps
+gs -landscape SAGAcontour2.ps
+
+# clean up directory
+rm vert*.obs vert*.in snap.dat *.ext *.mat *.out *.pl?
+rm fort* snap_powell.dat *.cor results.m
+rm vert.m vert.pout vert.trf vertC.bdr vertC.cdr vertC.m
+rm vertC2.bdr vertC2.cdr vertC2.m
+#rm results *.ps

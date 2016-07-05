@@ -1,0 +1,13 @@
+#  script to generate covariance matrix for SAGA with real data using a VLA 
+
+# remove old data, if any
+rm cov.in
+
+# now compute the covariance matrix from data and convert covariance matrix to SAGA format 
+matlab -nodisplay << INN >> list
+cd fftData
+rm cov.in % remove cov.in file if present
+compute_csdm % program file name to compute and write out covariance matrix
+quit
+
+

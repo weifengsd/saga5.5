@@ -1,0 +1,78 @@
+   This is a simple example of how to run SAGA with a vertical array on
+a single frequency ( 388 Hz ).  The script runSAGA.scr will first run 
+SAGA to generate the simulated data file. Then copy the input file from 
+a *.obs extension to a *.in extension.  
+   Now that the simulated data is set as the input file, run SAGA a 
+second time to produce the 'a posteriori' distribution data.  The 
+post-processor POST is run on the SAGA output to compute the 'a posteriori' 
+distribution best, most-likely, and mean fit results.  POST also appends a
+text copy of the results to the file results.
+   To produce the contour plot, repeat these steps with a different input
+parameter file for SAGA (vertC.dat). 
+   To generate the two postscript plots use Matlab.  Using the built in
+M-files in the SAGA matlab directory generate the inversion plot and the
+contour plot.
+
+   The inversion plot shows a panel for each parameter searched. The plot
+shows that in each panel (search parameter) the result seems to be well 
+determined.
+   The contour plot shows the first two optimization parameters plotted
+as a contour plot with the first search parameter as the X-axis and the
+second search parameter as the Y-axis.  Note that only one frequency is
+used as the highest frequency available will be the one that is most 
+sensitive to array tilt.  388 Hz was chosen as it was the highest frequency
+available in the real data.
+
+   The results file looks like:
+>>m results
+SAGA jumpstart Example,  search for source range & depth + array tilt           
+ ***************
+  best obtainable theoretical fit -1.0414954E-08
+  best fit (best, ppd, mean)  0.2469351      0.2494895      0.3463788
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2133.858     2133.858  2134.427     0.083
+  2 Array tilt (m)             1    -1.181       -1.024    -0.745     0.073
+  3 Source depth (m)           1    59.764       59.764    58.565     0.082
+ 
+note that the range parameter is off from the true range(2120m) by 13.9 m.
+If we determine the interval between discrete samples for the source range 
+parameter we see that (5000m - 1000m+1)/128 intervals = 31.257 m between 
+discrete samples.  This is greater than the range parameter is off by, so 
+SAGA found the closest bin.
+
+Now double the number of discrete intervals from 128 to 256 for the range
+parameter and rerun the SAGA example(takes a little bit longer).  The results 
+improve to:
+
+SAGA jumpstart Example,  search for src range & depth + tilt  (range Nincr=256)
+ ***************
+  best obtainable theoretical fit -1.0414954E-08
+  best fit (best, ppd, mean)  6.9761269E-02  6.9761269E-02  6.2417135E-02
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2113.726     2113.726  2114.106     0.001
+  2 Array tilt (m)             1    -0.824       -0.824    -0.824     0.012
+  3 Source depth (m)           1    60.196       60.196    60.131     0.005
+
+Now the range parameter is off from the true range by 6.3 m, roughly cutting
+the difference in half.
+
+Pay attention to the size of each discrete interval for each search parameter
+to make sure that its limit will be accurate enough for the work being done.
+
+
+
+summary of what is in the directory
+
+scripts:
+runSAGA.scr - script to run SAGA and produce 'a posteriori' distribution plot
+
+input parameter files:
+vert.dat  - SAGA input parameter file ( options set to compute inversion )
+vertC.dat - SAGA input parameter file ( options set to produce contour plot )
+
+results output by SAGA:
+results - results of both runs in test file format
+SAGAcontour.ps - contour postscript plot
+SAGAscatter.ps - 'a posteriori' distribution plot (inversion plot)
