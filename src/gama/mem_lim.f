@@ -4,7 +4,7 @@ c
 c
 c      implicit integer*4(i-n)
       integer*4 n,nlim,le,lv,iibad
-      character*64 eline,vname
+      character(len=*) eline,vname
 c
       if(n .gt. nlim) then
          print *,' '
