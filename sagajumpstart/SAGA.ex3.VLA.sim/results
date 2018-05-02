@@ -1,0 +1,10 @@
+SAGA jumpstart Example,  search for src range & depth + tilt  range Nincr=128   
+ ***************
+  best obtainable theoretical fit  2.0062746E-08
+  best fit (best, ppd, mean)  0.1480726      0.1480726      0.1325386    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2984.252     2984.252  2984.954     0.007
+  2 Array tilt (m)             1    -2.283       -2.283    -2.273     0.036
+  3 Source depth (m)           1    60.866       60.866    60.245     0.009
+ 

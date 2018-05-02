@@ -1,0 +1,27 @@
+#
+#  script to fft the data set, create the replica vectors,
+#      compute CSDM's , then using kraken, field and nbf
+#      perform MFP and generate ambiguity surfaces over 
+#      the specified frequencies
+#
+set dir = working
+set cnt = 0
+
+foreach freq ( 49 64 79 94 112 130 148 166 201 235 283 338 388 )
+
+@ cnt ++
+
+echo " "
+echo " "
+echo $freq
+echo " "
+echo " "
+sleep 2
+
+runRep.scr $freq
+
+end
+
+# clean up 
+rm repvec.sio array.sio MODFIL0001 MODFIL1 SHDFIL
+rm nbfout.*.sio traceout.*.sio

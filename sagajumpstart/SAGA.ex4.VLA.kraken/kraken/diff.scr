@@ -1,0 +1,21 @@
+#
+set verbose
+#  script to compare repvec differences between
+#    unix repvec a 0 range and linux repvec at 0 range
+#
+set loc = /net/tectus/tectus1/dave/Kraken/SwellEx96/VLAexamples/test/mkCSDMsim/mplfield/
+
+partx -o 1 0 j $loc/repvec.0km.sio ./repvec.unix.0km.sio
+
+partx -o 1 0 j $loc/repvec.3km.sio ./repvec.unix.3km.sio
+
+subt repvec.0km.sio repvec.unix.0km.sio diff.0km
+subt repvec.3km.sio repvec.unix.3km.sio diff.3km
+
+echo " diff.0km "
+sx diff.0km
+
+echo " diff.3km "
+sx diff.3km
+
+rm repvec.unix.0km.sio repvec.unix.3km.sio

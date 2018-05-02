@@ -1,0 +1,10 @@
+#
+max 0 $1 max
+min 0 $1 min
+maxch 0 max maxch
+minch 0 min minch
+set mx = `siod -o -x -s 0 1 0 maxch`
+set mn = `siod -o -x -s 0 1 0 minch`
+
+echo "	$mx	$mn "
+rm max min maxch minch

@@ -167,7 +167,9 @@ c     WRITE(*,*)'entering  read_cov'
       xcov_sum=0
       iwarn=0
       ibart=0
+      WRITE(*,*)'gain.f nfrq',nfrq
       DO ifrq=1,nfrq
+         WRITE(*,*)'gain.f ifrq, frq(ifrq)',ifrq,frq(ifrq)
          DO irng=1,nx
             ibart=ibart+1
  999        DO i=1,3 ! there should be 3 title lines. (Not including 'Format:...')
@@ -242,7 +244,7 @@ c-----
      &           xfreq.GE.frq(ifrq)-0.05) THEN
                WRITE(*,*)' using    cov mat for freq',xfreq
             ELSE
-               WRITE(*,*)' skipping cov mat for freq:',xfreq
+               WRITE(*,*)' skipping cov mat for xfreq, frq(ifrq), ifrq',xfreq,frq(ifrq)
 c     !               ' Req. freq: ', frq(ifrq)
                GOTO 999
             ENDIF

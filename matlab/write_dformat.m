@@ -22,7 +22,7 @@ for ifr=1:nfr
 end
 %keyboard
 fprintf(fidout,'!  \n');
-%status=fclose(fidout)
+status=fclose(fidout);
 
 
 

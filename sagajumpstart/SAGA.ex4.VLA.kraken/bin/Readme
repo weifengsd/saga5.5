@@ -1,0 +1,25 @@
+Here are three simple programs to generate array shapes with tilt and bow 
+( vertical array ) or bearing and bow ( horizontal array ). 
+
+estimateBow   - will generate a vertical array shape given 5 parameters.
+                the parameters are number of elements, Z coordinate of first 
+                element, interelement spacing, tilt from element 1 in degrees, 
+                and maximum amount of bow at array center. Output is in the
+                format expected by field.
+
+estimateHBow  - will generate a horizontal array shape given 5 parameters
+                the parameters are number of elements, Y coordinate of first 
+                element, interelement spacing, tilt from element 1 in degrees, 
+                and maximum amount of bow at array center. Output is in the
+                format expected by mplfield.
+
+estimateHBowf - will take an input straight line array shape(file) and modify 
+                it to have a particular bearing and bow.  Will also add a depth
+                coordinate to the output. Unlike the first two routines, this
+                does not have to have equally spaced elements. Output is in the
+                format expected by mplfield.
+
+maxCH.scr - script to use siops to compute maximum value in each channel of
+            and sio data file.
+maxminCH.scr - script to use siops to compute maximum and minimum values in 
+            each channel of and sio data file.

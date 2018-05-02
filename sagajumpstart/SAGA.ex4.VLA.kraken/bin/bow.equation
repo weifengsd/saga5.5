@@ -1,0 +1,8 @@
+from SAGA manual   http://www.mpl.ucsd.edu/people/gerstoft
+
+chapter 13
+
+the equation I used is the 2d form of the equation that 
+peter explains in chapter 13.  Note that at the time of
+this writting the equation 39 was incorrect.  It should
+have a^2/Ls^2  it currently shows  a^2/Ls  

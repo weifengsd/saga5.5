@@ -1,0 +1,16 @@
+#
+alias gvl 'ghostview -landscape'
+gvl amsurf.112Hz.ps
+gvl amsurf.130Hz.ps
+gvl amsurf.148Hz.ps
+gvl amsurf.166Hz.ps
+gvl amsurf.201Hz.ps
+gvl amsurf.235Hz.ps
+gvl amsurf.283Hz.ps
+gvl amsurf.338Hz.ps
+gvl amsurf.388Hz.ps
+gvl amsurf.49Hz.ps
+gvl amsurf.64Hz.ps
+gvl amsurf.79Hz.ps
+gvl amsurf.94Hz.ps
+gvl amsurf.allHz.ps

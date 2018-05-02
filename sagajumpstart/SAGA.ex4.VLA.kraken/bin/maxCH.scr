@@ -1,0 +1,7 @@
+#
+max 0 $1 max
+maxch 0 max maxch
+set mx = `siod -o -x -s 0 1 0 maxch`
+
+echo "	$mx"
+rm max maxch 

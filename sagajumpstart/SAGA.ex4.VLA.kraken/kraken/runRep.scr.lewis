@@ -1,0 +1,100 @@
+#!/bin/csh
+#
+# script to use kraken, field, and nbf to do MFP and generate 
+# the ambiguity surfaces over specified Frequencies
+#
+
+if ($#argv != 1) then
+  echo "Usage: run.scr f"
+  echo "Where f has to be one of the following frequencies:"
+  echo "49 64 79 94 112 130 148 166 201 235 283 338 388"
+#  echo "49 112 201 388"
+  exit
+endif
+
+set dir = working
+set f = $1
+echo $f
+
+if (-e MODFIL) rm MODFIL
+if (-e MODFIL0001) rm MODFIL0001
+if (-e SHDFIL) rm SHDFIL
+
+# set the source depths to loop through
+set d1 = 2
+set d2 = 200
+
+set num_els = 21
+
+# Make an array file for nbf... since we are using replica vectors,
+# nbf does not need array element positions, but the program asks 
+# for something.
+@ i = $num_els * 4
+const 0 $i array.sio
+mchan $num_els array.sio array.sio
+
+################################################################
+###                 Running Kraken                           ###
+################################################################
+# edit kraken input file (input.env) for the correct frequency
+ex input.env << INN
+2c
+$f
+.
+wq!
+INN
+# run kraken
+kraken < input.env
+
+################################################################
+###                 Running field                            ###
+################################################################
+cp MODFIL0001 MODFIL1
+
+field < input.flp
+
+## generate csdm from replicate vector to get optimal match
+#krakp -R SHDFIL repvec.txt << INN
+#60
+#INN
+## generate csdm from replica vector to get optimal match
+#mplfield/lewiskrakpost.dir/krakp.NoNorm -R SHDFIL repvec.txt << INN
+#60
+#INN
+# generate csdm from normalized replica vector to get optimal match
+mplfield/lewiskrakpost.dir/krakp.norm -R SHDFIL repvec.txt << INN
+60
+INN
+point -c 0 repvec.txt repvec.sio
+##  for unix system 
+## 3.0 km
+#partx -o 3151 21 j repvec.sio repvec.3km.sio
+## 4.5 km
+##partx -o 4726 21 j repvec.sio repvec.3km.sio
+## 6.0 km
+##partx -o 6301 21 j repvec.sio repvec.3km.sio
+
+
+snapseg 500   1 repvec.sio repvec.0km.sio
+snapseg 500 151 repvec.sio repvec.3km.sio
+
+# in unix version repvec is already conj so need
+# to unconj for p, and transpose for pH
+#conj repvec.3km.sio p.sio
+#transp -c repvec.3km.sio pH.sio
+#
+# in linux version repvec is not conj so need
+# to do nothing to generate p.sio , and conj and
+# transpose to get pH
+cp repvec.3km.sio p.sio
+conj p.sio pH.sio
+transp -c pH.sio pH.sio
+
+matmult -c p.sio pH.sio csdm.rep.${f}Hz.sio
+
+divc $num_els csdm.rep.${f}Hz.sio csdm.rep.${f}Hz.sio
+
+
+
+# clean up
+#rm repvec.3km.sio p.sio pH.sio

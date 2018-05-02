@@ -1,0 +1,4 @@
+matlab -nodisplay << INN >> list
+rm cov.in % remove cov.in file if present
+compute_csdm % program file name
+quit

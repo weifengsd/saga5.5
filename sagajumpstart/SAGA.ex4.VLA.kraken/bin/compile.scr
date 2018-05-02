@@ -1,0 +1,4 @@
+#
+    cc -o estimateBow   estimateBow.c   -lm
+    cc -o estimateHBow  estimateHBow.c  -lm
+    cc -o estimateHBowf estimateHBowf.c -lm -lsio

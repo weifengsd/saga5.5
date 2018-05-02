@@ -1,0 +1,65 @@
+#
+#  script to fft the data set, create the replica vectors,
+#      compute CSDM's , then using kraken, field and nbf
+#      perform MFP and generate ambiguity surfaces over 
+#      the specified frequencies
+#
+#  first fft data and generate replica vectors
+#     this part takes some time (~15 min) 
+cd fftData
+echo " running get_peak_bins.scr "
+time get_peak_bins.scr
+cd ..
+#
+# next compute CSDMS
+echo " running mkCSDM.scr "
+mkCSDM.scr
+#
+set cnt = 0
+foreach freq ( 49 64 79 94 112 130 148 166 201 235 283 338 388 )
+
+@ cnt ++
+
+echo " "
+echo " "
+echo $freq
+echo " "
+echo " "
+sleep 2
+
+run.scr $freq
+
+#
+#   create ambiguity surface by averaging all frequencies together
+
+if ( $cnt == 1 ) then 
+   cp amsurf.${freq}Hz.sio amsurf.allHz.sio
+  else
+   add amsurf.${freq}Hz.sio amsurf.allHz.sio amsurf.allHz.sio
+endif
+
+#gvl amsurf.${freq}Hz.ps
+
+end
+
+#
+# divide by number of frequencies added together
+echo " $cnt frequencies averaged "
+divc $cnt amsurf.allHz.sio amsurf.allHz.sio
+
+logmag -d -z amsurf.allHz.sio in.sio
+# plot
+ex pc << INN
+20c
+Conventional MFP, avg of $cnt Frequencies
+.
+wq!
+INN
+#shade -L -R -T -t -r pc in.sio amsurf.allHz.ps
+shade -L -R -T -t -s pc in.sio amsurf.allHz.ps
+
+
+ghostview -landscape amsurf.allHz.ps
+
+rm repvec.sio array.sio MODFIL MODFIL1 SHDFIL in.sio
+rm nbfout.*.sio traceout.*.sio csdm.*.sio

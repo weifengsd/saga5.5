@@ -1,0 +1,122 @@
+#!/bin/csh
+#
+# script to use kraken, field, and nbf to do MFP and generate 
+# the ambiguity surfaces over specified Frequencies
+#
+
+if ($#argv != 1) then
+  echo "Usage: run.scr f"
+  echo "Where f has to be one of the following frequencies:"
+  echo "49 64 79 94 112 130 148 166 201 235 283 338 388"
+#  echo "49 112 201 388"
+  exit
+endif
+
+set dir = working
+set f = $1
+echo $f
+
+if (-e MODFIL) rm MODFIL
+if (-e MODFIL0001) rm MODFIL0001
+if (-e SHDFIL) rm SHDFIL
+
+# set the source depths to loop through
+set d1 = 2
+set d2 = 200
+
+set num_els = 21
+
+# Make an array file for nbf... since we are using replica vectors,
+# nbf does not need array element positions, but the program asks 
+# for something.
+@ i = $num_els * 4
+const 0 $i array.sio
+mchan $num_els array.sio array.sio
+
+################################################################
+###                 Running Kraken                           ###
+################################################################
+# edit kraken input file (input.env) for the correct frequency
+ex input.env << INN
+2c
+$f
+.
+wq!
+INN
+# run kraken
+kraken < input.env
+
+################################################################
+###                 Running field                            ###
+################################################################
+cp MODFIL0001 MODFIL1
+
+field < input.flp
+
+# generate csdm from replicate vector to get optimal match
+krakp -R SHDFIL repvec.txt << INN
+60
+INN
+point -c 0 repvec.txt repvec.sio
+# 3.0 km
+partx -o 3151 21 j repvec.sio repvec.3km.sio
+# 4.5 km
+#partx -o 4726 21 j repvec.sio repvec.3km.sio
+# 6.0 km
+#partx -o 6301 21 j repvec.sio repvec.3km.sio
+
+conj repvec.3km.sio p.sio
+transp -c repvec.3km.sio pH.sio
+matmult -c p.sio pH.sio csdm.rep.${f}Hz.sio
+
+divc $num_els csdm.rep.${f}Hz.sio csdm.rep.${f}Hz.sio
+
+
+
+
+#set d = $d1
+#while ($d <= $d2)
+#krakp -R SHDFIL repvec.sio << INN
+#$d
+#INN
+#
+#################################################################
+####                 Running Nbf                              ###
+#################################################################
+#
+##     run the BARTLETT  case
+#      echo "=================================================================="
+#      echo "Freq = $f   SD = $d m  -- BARTLETT"
+#      echo "=================================================================="
+#      nbf -b c:1:0 -l fr:repvec.sio -f n:8192:8192:50:1500:${f} -p array.sio \
+#          -t traceout.${f}Hz.sio -x csdm.rep.${f}Hz.sio nbfout.${f}Hz.sio
+#
+#      if ($d == $d1) then
+#	mv nbfout.${f}Hz.sio $dir/amsurf.${f}Hz.sio
+#      else
+#	mux $dir/amsurf.${f}Hz.sio nbfout.${f}Hz.sio $dir/amsurf.${f}Hz.sio
+#      endif
+#
+### increment the depths by 2
+##@ d = $d + 2
+## increment the depths by 4
+#@ d = $d + 4
+#end
+
+# divide by the trace of the input matrix to get correlations between 0 and 1
+#  note: NBF multiplies the trace by number of element so dividing by the
+#        trace also normalized the array gain (see nbf man page -t option)
+div -g -s traceout.${f}Hz.sio $dir/amsurf.${f}Hz.sio $dir/amsurf.${f}Hz.sio
+logmag -d -z $dir/amsurf.${f}Hz.sio in.sio
+# plot
+ex pc << INN
+20c
+Conventional MFP, Frequency = $f Hz
+.
+wq!
+INN
+#shade -L -R -T -t pc in.sio amsurf.${f}Hz.ps
+shade -L -R -T -t -r pc in.sio plots/amsurf.${f}Hz.ps
+shade -L -R -T -t    pc in.sio plots/amsurf.${f}Hz.bw.ps
+
+#rm repvec.3km.sio p.sio pH.sio traceout*Hz.sio

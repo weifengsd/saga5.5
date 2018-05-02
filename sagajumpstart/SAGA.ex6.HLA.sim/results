@@ -1,0 +1,11 @@
+SAGA example 6 , HLA simulation
+ ***************
+  best obtainable theoretical fit  2.6959244E-08
+  best fit (best, ppd, mean)  6.3673586E-02  6.3677058E-02  0.9627493    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2066.142     2066.142  2066.142     0.000
+  2 Source depth (m)           1    60.157       60.157    60.143     0.012
+  3 Array out of plane param   5   320.315       39.685   179.774     0.390
+  4 Array out of plane param   2    14.961      -14.961    -0.023     0.375
+ 

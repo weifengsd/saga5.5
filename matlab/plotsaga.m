@@ -6,9 +6,9 @@
 %          By giving the variable "no_title" a value, title will be
 %          plotted at the bottom. 
 
-%function plotsaga_1(inputfil,stringofcomments)
+function plotsaga(inputfil,stringofcomments)
 % inputfil='ys3';
-clear all;
+% clear all;
 if (exist('inputfil')==0)
    filenm=input('SAGA filename ? ','s')
 else

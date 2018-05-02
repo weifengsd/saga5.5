@@ -1,0 +1,11 @@
+SAGA example 7 , HLA real data example                                          
+ ***************
+  best obtainable theoretical fit  4.4412155E-02
+  best fit (best, ppd, mean)  0.3956003      0.4015373      0.9725764    
+
+                                best-of all  most likely     mean   std-dev
+  1 Source range (m)           1  2211.024     2211.024  2232.839     0.047
+  2 Source depth (m)           1    63.701       62.992    63.783     0.054
+  3 Array out of plane param   5    42.520       42.520   148.695     0.372
+  4 Array out of plane param   2   -13.386      -13.701    -3.188     0.320
+ 
